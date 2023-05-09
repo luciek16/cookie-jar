@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const typeorm_config_1 = require("./typeorm.config");
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
@@ -19,6 +20,13 @@ app.post("/api/actions", (req, res) => {
     return res.status(400).send("Something went wrong");
 });
 const port = process.env.PORT;
+typeorm_config_1.AppDataSource.initialize()
+    .then(() => {
+    console.log("Data Source has been initialized!");
+})
+    .catch((err) => {
+    console.error("Error has occured during Data Source initialization", err);
+});
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 });
