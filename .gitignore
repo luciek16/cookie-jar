@@ -3,3 +3,6 @@ node_modules
 
 // dotenv
 .env
+
+// js files
+dist
