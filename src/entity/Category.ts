@@ -1,7 +1,7 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity("category")
-export class Category extends BaseEntity {
+export class Category {
 	@PrimaryGeneratedColumn("uuid")
 	id: string;
 
@@ -14,7 +14,6 @@ export class Category extends BaseEntity {
 	author: string;
 
 	constructor(id: string, catName: string, author: string) {
-		super();
 		this.id = id;
 		this.catName = catName;
 		this.author = author;
